@@ -1,0 +1,14 @@
+#map { height: 100%; }
+.info{
+   height: 50%;
+   width: 75%;
+   position: fixed;
+   top: 25%;
+   margin: 0 auto;
+   background-color: white;
+   z-index: 1;
+   display: none;
+}
+body{
+	margin: 0;
+}

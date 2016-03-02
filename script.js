@@ -13,7 +13,7 @@ var markers = [];
 //legge til episoder
 episoder.push(["Episode 1", [60.683629, 5.030783], "test.html"]);
 episoder.push(["Episode 2", [60.683629, 7.030783], "test2.html"]);
-
+episoder.push(["Episode 3", [69.683629, 7.030783], "test2.html", 1]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
   console.log(item[1]);
@@ -21,6 +21,9 @@ episoder.forEach(function (item, index, array) {
   $("nav").append("<button class='epButts' id='" + index + "'>" + item[0] + "</button>");
   $("article").append("<section id='"+ index +"'></section>");
   $("section#"+index).load("./"+item[2]);
+  if(item[3] == 1){
+    $("section#"+index).addClass("fullScreen");
+  }
 });
 
 //knappar
@@ -29,6 +32,12 @@ $(".epButts").click(function() {
     $("section").hide();
     $("article").show();
     $("section#"+this.id).show();
+    if($("section#"+this.id).hasClass("fullScreen")){
+      $("article").addClass("fullScreen");
+    }
+    else{
+      $("article").removeClass("fullScreen");
+    }
 });
 $(".lukk").click(function() {
     $("article").hide();

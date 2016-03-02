@@ -8,11 +8,11 @@ map.setView(new L.LatLng(60.683629, 5.030783),3);
 map.addLayer(osm);
 //markers
 var radoy = L.marker([60.683629, 5.030783]).addTo(map);
-var bergen = L.marker([60.401430, 5.314131]);
-var havet = L.marker([45.307612, -31.324032]);
-var ellis = L.marker([40.699483, -74.039536]);
-var brooklyn = L.marker([40.659225, -73.951874]);
-var minnesota = L.marker([44.848076, -94.086414]);
+var bergen = L.marker([60.401430, 5.314131]).addTo(map);
+var havet = L.marker([50.307612, -25.324032]).addTo(map);
+var ellis = L.marker([40.699483, -74.039536]).addTo(map);
+var brooklyn = L.marker([40.659225, -73.951874]).addTo(map);
+var minnesota = L.marker([44.848076, -94.086414]).addTo(map);
 
 //custom ikon
 var boatIcon = L.icon({
@@ -51,8 +51,36 @@ $(minnesota).click(function() {
 
 $(".lukk").click(function() {
    $(".info").hide();
+   $("section").hide();
 });
-$(".neste").click(function() {
-   $(".info").hide();
-   map.panTo(havet.getLatLng());
+$("#1").click(function() {
+  $("section").hide();
+   $(".info").show();
+   $("#radoy").show();
+   map.panTo(radoy.getLatLng());
+   map.setZoom(8);
+});
+$("#2").click(function() {
+  $("section").hide();
+   $(".info").show();
+   $("#bergen").show();
+   map.panTo(bergen.getLatLng());
+   map.setZoom(5);
+});
+$("#3").click(function() {
+  $("section").hide();
+   $(".info").show();
+   $("#havet").show();
+   map.panTo(havet.getLatLng(), {animate:true});
+});
+$("#4").click(function() {
+  $("section").hide();
+   $(".info").show();
+   $("#ellis").show();
+   map.panTo(ellis.getLatLng());
+});
+$("#5").click(function() {
+  $("section").hide();
+   $(".info").show();
+   map.panTo(minnesota.getLatLng());
 });

@@ -16,19 +16,26 @@ article{
 body{
 	margin: 0;
 }
+article{
+  top:0;
+  width: 45%;
+}
 article img{
-  max-width: 100%;
-  height: 50%;
+  width: 100%;
+  height: auto;
 }
 article.fullScreen{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items:center;
-  text-align: center;;
+  text-align: center;
 }
-article.fullScreen img{
-  height: 75%;
+.container{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
 }
 section{
   display: none;
@@ -40,4 +47,11 @@ nav{
   width: 50%;
   justify-content: center;
   text-align: center;
+}
+.fullScreen img{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: auto;
+  height: auto;
 }

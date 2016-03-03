@@ -9,36 +9,60 @@ map.addLayer(osm);
 
 var episoder = [];
 var markers = [];
+var currentEpisode = 0;
 
 //legge til episoder
-episoder.push(["Episode 1", [60.683629, 5.030783], "test.html"]);
-episoder.push(["Episode 2", [60.683629, 7.030783], "test2.html"]);
-episoder.push(["Episode 3", [69.683629, 7.030783], "test2.html", 1]);
+episoder.push(["Episode 1", [60.683629, 5.030783], "test.html",1]);
+episoder.push(["Episode 2", [55.683629, 1.030783], "test2.html"]);
+episoder.push(["Episode 3", [50.683629, 0.030783], "test2.html"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
   console.log(item[1]);
   markers[index] = L.marker(item[1]).addTo(map);
   $("nav").append("<button class='epButts' id='" + index + "'>" + item[0] + "</button>");
   $("article").append("<section id='"+ index +"'></section>");
-  $("section#"+index).load("./"+item[2]);
+  $("section#"+index).load("./episoder/"+item[2]);
   if(item[3] == 1){
     $("section#"+index).addClass("fullScreen");
   }
 });
 
+episodeHopper(currentEpisode);
+
 //knappar
 $(".epButts").click(function() {
-    map.panTo(markers[this.id].getLatLng());
-    $("section").hide();
-    $("article").show();
-    $("section#"+this.id).show();
-    if($("section#"+this.id).hasClass("fullScreen")){
-      $("article").addClass("fullScreen");
-    }
-    else{
-      $("article").removeClass("fullScreen");
-    }
+  episodeHopper(this.id);
+
+  //forsøk på "animasj
 });
 $(".lukk").click(function() {
-    $("article").hide();
+  $("article").hide();
 });
+$("#neste").click(function() {
+  if(currentEpisode !=markers.length-1){
+    episodeHopper(currentEpisode+1);
+  }
+});
+$("#forrige").click(function() {
+  if(currentEpisode != 0){
+    episodeHopper(currentEpisode-1);
+  }
+});
+function episodeHopper(id){
+  currentEpisode = parseInt(id);
+  map.panTo(markers[id].getLatLng());
+  $("section").hide();
+  $("article").show();
+  $("section#"+id).show();
+  if($("section#"+id).hasClass("fullScreen")){
+    $("article").addClass("fullScreen");
+  }
+  else{
+    $("article").removeClass("fullScreen");
+  }
+  if(id != 0){
+    L.polygon([
+      markers[id].getLatLng(), markers[id-1].getLatLng()
+    ]).addTo(map);
+  }
+}

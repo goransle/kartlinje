@@ -15,6 +15,7 @@ article{
 }
 body{
 	margin: 0;
+  font-size: 1.25em;
 }
 article{
   top:0;
@@ -25,17 +26,7 @@ article img{
   height: auto;
 }
 article.fullScreen{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  text-align: center;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  text-align: center;
+  width: auto;
 }
 section{
   display: none;
@@ -54,4 +45,10 @@ nav{
   left: 0;
   width: auto;
   height: auto;
+}
+.fullScreen .tekst{
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1em;
 }

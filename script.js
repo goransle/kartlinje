@@ -1,7 +1,9 @@
 var map = L.map('map').setView([51.505, -0.09], 13);
-var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+var osmUrl='http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png';
+var britishMap='http://nls-3.tileserver.com/nls/{z}/{x}/{y}.jpg';
+var osmAttrib='Map data © <a href="https://openhistorcalmap.org">OpenHistoricalMap</a> contributors';
 var osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 12, attribution: osmAttrib});
+var britain = new L.TileLayer(britishMap, {minZoom: 3, maxZoom: 12, attribution: osmAttrib});
 
 //kartoppsett
 map.setView(new L.LatLng(60.683629, 5.030783),3);
@@ -12,9 +14,12 @@ var markers = [];
 var currentEpisode = 0;
 
 //legge til episoder
-episoder.push(["Episode 1", [60.683629, 5.030783], "test.html",1]);
-episoder.push(["Episode 2", [55.683629, 1.030783], "test2.html"]);
-episoder.push(["Episode 3", [50.683629, 0.030783], "test2.html"]);
+episoder.push(["Introduksjon", [60.397544, 5.321792], "intro.html",1]);
+episoder.push(["2. mai", [60.397544, 5.321792], "baaten.html",1]);
+episoder.push(["2. mai", [53.741275, -0.279313], "null"]);
+episoder.push(["7. mai", [53.401308, -2.995094], "null"]);
+episoder.push(["17. mai", [42.380246, -71.057279], "null"]);
+episoder.push(["17. mai ++", [44.850110, -94.081004], "null"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
   console.log(item[1]);
@@ -32,8 +37,6 @@ episodeHopper(currentEpisode);
 //knappar
 $(".epButts").click(function() {
   episodeHopper(this.id);
-
-  //forsøk på "animasj
 });
 $(".lukk").click(function() {
   $("article").hide();
@@ -48,9 +51,25 @@ $("#forrige").click(function() {
     episodeHopper(currentEpisode-1);
   }
 });
+$(markers).click(function() {
+    episodeHopper($(markers).index(this));
+});
 function episodeHopper(id){
   currentEpisode = parseInt(id);
-  map.panTo(markers[id].getLatLng());
+  map.panTo(markers[currentEpisode].getLatLng());
+  if(currentEpisode != 0){
+    L.polygon([
+      markers[id].getLatLng(), markers[id-1].getLatLng()
+    ]).addTo(map);
+    if (id == 2) {
+      map.zoomIn(4);
+      map.addLayer(britain);
+    }
+    if (id == 3) {
+      map.zoomOut(3);
+      map.removeLayer(britain);
+    }
+  }
   $("section").hide();
   $("article").show();
   $("section#"+id).show();
@@ -60,9 +79,5 @@ function episodeHopper(id){
   else{
     $("article").removeClass("fullScreen");
   }
-  if(id != 0){
-    L.polygon([
-      markers[id].getLatLng(), markers[id-1].getLatLng()
-    ]).addTo(map);
-  }
+
 }

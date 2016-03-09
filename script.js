@@ -8,6 +8,7 @@ var britain = new L.TileLayer(britishMap, {minZoom: 3, maxZoom: 12, attribution:
 //kartoppsett
 map.setView(new L.LatLng(60.683629, 5.030783),3);
 map.addLayer(osm);
+//test
 
 var episoder = [];
 var markers = [];

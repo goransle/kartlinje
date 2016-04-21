@@ -17,6 +17,26 @@ $("article").hide();
 $("#bgvideo").hide();
 $("#map_lastFrame").hide();
 $("article#sletta").show();
+
+//Vis/skjul meny. Ingen funker, hvorfor er jeg overraska..?
+
+/*function toggleMenu(){
+    $("#miniLogo").click(function(){
+        if (("#pop-up").display == none){
+            $("#pop-up").display = block;
+            };
+        else{
+            $("#pop-up").display=none;
+        };
+    });
+};*/
+
+function toggleMenu2(){
+    $("#miniLogo").click(function(){
+        $("#pop-up").toggle();
+    });
+};
+
 function episodeHopper(id){
   currentEpisode = parseInt(id);
   var itemID = getItemID(episoder[currentEpisode]);
@@ -61,14 +81,14 @@ function getItemID(item){
 function bergen(itemID){
   if(forrige == "sletta"){
     $("article#"+ forrige).fadeOut(1000);
-    $("nav").fadeOut();
+    $("#navContainer").fadeOut();
     $("#bgvid").show();
     $("#bgvid").get(0).playbackRate = 2;
     $("#bgvid").get(0).play();
-    $("#yakety").get(0).play();
+    //$("#yakety").get(0).play();
     $("article#"+ itemID).delay(5000).fadeIn(1000);
     $("#map_lastFrame").delay(8000).fadeIn(1000);
-    $("nav").delay(5000).fadeIn();
+    $("#navContainer").delay(5000).fadeIn();
   }
   if(forrige == "baaten"){
     $("article#"+ forrige).fadeOut(1000);
@@ -100,7 +120,7 @@ function baaten(itemID){
     $("#map_lastFrame").fadeOut(1000);
     $("article#"+ itemID).fadeIn(2000);
     $("#bgvid").hide();
-    $("#yakety").get(0).pause();
+    //$("#yakety").get(0).pause();
   }
   else {
     $("article#"+ forrige).fadeOut(1000);

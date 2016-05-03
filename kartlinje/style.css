@@ -25,6 +25,11 @@ article{
    border-radius: 15px;
 }
 */
+
+html{
+    overflow: hidden;
+}
+
 article img{
   width: auto;
   height: auto;

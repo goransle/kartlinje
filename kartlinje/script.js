@@ -5,7 +5,7 @@ var forrige = "sletta";
 //legge til episoder
 episoder.push(["sletta.html"]);
 episoder.push(["bergen.html"]);
-episoder.push(["baaten.html"]);
+episoder.push(["bryggen.html"]);
 episoder.push(["havet.html"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {

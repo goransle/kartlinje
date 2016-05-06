@@ -94,7 +94,7 @@ header, .fullScreen p{
   top: 0;
   height:65px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(54, 88, 112, 0.75);
   z-index: 3;
 }
 
@@ -110,7 +110,7 @@ nav button{
   border: none;
   margin: 5px;
   margin-top: 10px;
-  font-family: fantasy;
+  /*font-family: "";*/
   font-size: 1.85em;
   color:white;
   padding: 0;

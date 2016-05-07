@@ -11,6 +11,7 @@ episoder.push(["havet.html"]);
 episoder.forEach(function (item, index, array) {
   console.log(item);
   $("body").append("<article id='"+ getItemID(item) +"'></article>");
+  $("#pop-up ul").append("<li>" + getItemID(item) +"</li>");
   $("#"+getItemID(item)).load("./episoder/"+item.toString());
 });
 $("article").hide();
@@ -31,18 +32,20 @@ $("article#sletta").show();
     });
 };*/
 
-function toggleMenu2(){
-    $("#miniLogo").click(function(){
-        $("#pop-up").toggle();
-    });
-};
+$("#miniLogo").click(function(){
+    $("#pop-up").toggle();
+});
+$("#pop-up li").click(function(){
+    var clicked = $(this).html() + ".html";
+    episodeHopper(getItemID(clicked + ".html"));
+});
 
 function episodeHopper(id){
   currentEpisode = parseInt(id);
   var itemID = getItemID(episoder[currentEpisode]);
   console.log(forrige);
   //her er det plass til å legge inn animasjoner av diverse slag
-  if(itemID == "baaten"){
+  if(itemID == "bryggen"){
     baaten(itemID);
   }
   else if(itemID == "bergen")
@@ -90,12 +93,11 @@ function bergen(itemID){
     $("#map_lastFrame").delay(8000).fadeIn(1000);
     $("#navContainer").delay(5000).fadeIn();
   }
-  if(forrige == "baaten"){
+  if(forrige == "bryggen"){
     $("article#"+ forrige).fadeOut(1000);
     $("article#"+ itemID).show();
     $("#map_lastFrame").fadeIn(1000);
     $("#map_lastFrame").animate({width: "100%", height: "100%"}, 1000);
-
   }
 }
 function sletta(itemID){
@@ -115,11 +117,11 @@ function sletta(itemID){
 }
 function baaten(itemID){
   if(forrige == "bergen"){
-    $("article#"+ forrige).fadeOut(1000);
+    $("article#"+ forrige).fadeOut(500);
     $("#map_lastFrame").animate({width: "200%", height: "200%"}, 1000);
-    $("#map_lastFrame").fadeOut(1000);
-    $("article#"+ itemID).fadeIn(2000);
-    $("#bgvid").hide();
+    //$("#map_lastFrame").fadeOut(1000);
+    $("article#"+ itemID).delay(500).fadeIn(500);
+    //$("#bgvid").hide();
     //$("#yakety").get(0).pause();
   }
   else {

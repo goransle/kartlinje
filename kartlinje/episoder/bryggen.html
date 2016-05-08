@@ -2,7 +2,9 @@
   <div class="container">
     <img id="bildet" src="/episoder/media/Bryggen/BryggenBlank.png" alt="" />
     <div id="baatOmraade"></div>
-	<div id="kontorOmraade"></div>
+	  <div id="kontorOmraade"></div>
+    <div id="flaggOmraade"></div>
+    <div id="barnOmraade"></div>
     <script src="/js/jquery-2.1.0.min.js"></script>
 
     <!-- <audio src="episoder/media/Bryggen.m4a" autoplay="true"></audio> -->
@@ -21,9 +23,15 @@ $("#baatOmraade").mouseover(function() {
   $("#bildet").attr("src", "/episoder/media/Bryggen/BryggenBaat.png");
 });
 $("#kontorOmraade").mouseover(function() {
-  $("#bildet").attr("src", "/episoder/media/Bryggen/");
+  $("#bildet").attr("src", "/episoder/media/Bryggen/BryggenBygning.png");
 });
-$("#baatOmraade, #kontorOmraade").mouseout(function() {
+$("#flaggOmraade").mouseover(function() {
+  $("#bildet").attr("src", "/episoder/media/Bryggen/BryggenFlagg.png");
+});
+$("#barnOmraade").mouseover(function() {
+  $("#bildet").attr("src", "/episoder/media/Bryggen/BryggenBarn.png");
+});
+$("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function() {
   $("#bildet").attr("src", "/episoder/media/Bryggen/BryggenBlank.png");
 });
 
@@ -66,11 +74,37 @@ $("#baatOmraade, #kontorOmraade").mouseout(function() {
   left: 375px;
   width: 150px;
   height: 150px;
-  background: rgba(0, 0, 0, 0.5);;
+  background: rgba(0, 0, 0, 0);
   -moz-border-radius: 100px / 50px;
   -webkit-border-radius: 100px / 50px;
   border-radius: 100px / 50px;
   transform: rotate(0deg);
+  z-index: 1;
+}
+#flaggOmraade {
+  position: absolute;
+  top: 125px;
+  left: 120px;
+  width: 130px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0);
+  -moz-border-radius: 10px / 10px;
+  -webkit-border-radius: 10px / 10px;
+  border-radius: 10px / 10px;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+#barnOmraade {
+  position: absolute;
+  bottom: 0px;
+  right: 165px;
+  width: 130px;
+  height: 150px;
+  background: rgba(0, 0, 0, 0);
+  -moz-border-radius: 10px / 10px;
+  -webkit-border-radius: 10px / 10px;
+  border-radius: 10px / 10px;
+  transform: rotate(2deg);
   z-index: 1;
 }
 #tekst{

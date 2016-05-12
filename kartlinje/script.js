@@ -7,6 +7,10 @@ episoder.push(["sletta.html"]);
 episoder.push(["bergen.html"]);
 episoder.push(["bryggen.html"]);
 episoder.push(["havet.html"]);
+episoder.push(["storm.html"]);
+episoder.push(["ankomst.html"]);
+episoder.push(["ellisisland.html"]);
+episoder.push(["dakota.html"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
   console.log(item);
@@ -18,19 +22,6 @@ $("article").hide();
 $("#bgvideo").hide();
 $("#map_lastFrame").hide();
 $("article#sletta").show();
-
-//Vis/skjul meny. Ingen funker, hvorfor er jeg overraska..?
-
-/*function toggleMenu(){
-    $("#miniLogo").click(function(){
-        if (("#pop-up").display == none){
-            $("#pop-up").display = block;
-            };
-        else{
-            $("#pop-up").display=none;
-        };
-    });
-};*/
 
 $("#miniLogo").click(function(){
     $("#pop-up").toggle();
@@ -132,4 +123,17 @@ function baaten(itemID){
 
 $(document).ready(function() {
   $('.fancybox').fancybox();
+  $(".fancybox-thumb").fancybox({
+		prevEffect	: 'none',
+		nextEffect	: 'none',
+		helpers	: {
+			title	: {
+				type: 'outside'
+			},
+			thumbs	: {
+				width	: 50,
+				height	: 50
+			}
+		}
+	});
 });

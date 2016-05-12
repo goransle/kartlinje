@@ -42,7 +42,7 @@ article{
     left: 0;
    top: 65;
    margin: 0 auto;
-   width: 33%;
+   width: 40%;
     min-height: 100%;
    max-height: 100%;
    overflow-y: auto;
@@ -57,12 +57,23 @@ article{
     border-right: 3px solid black;
 }
 
+/*Styling for enkeltepisoder*/
 article#bryggen{
     width: 100%;
     margin: 0;
     padding: 0;
 }
-
+article#ankomst{
+    width: auto;
+}
+article#ellisisland{
+    width: auto;
+}
+article#ellisisland section{
+  display: flex;
+  flex-flow: row;
+  padding-top: 1em;
+}
 article p{
 }
 
@@ -203,4 +214,6 @@ img#map_lastFrame {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+}
+.fancybox-thumb{
 }

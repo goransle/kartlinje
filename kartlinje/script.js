@@ -19,7 +19,6 @@ episoder.forEach(function (item, index, array) {
   $("#"+getItemID(item)).load("./episoder/"+item.toString());
 });
 $("article").hide();
-$("#bgvideo").hide();
 $("#map_lastFrame").hide();
 $("article#sletta").show();
 
@@ -42,15 +41,25 @@ function episodeHopper(id){
   else if(itemID == "bergen")
     bergen(itemID);
   else if(itemID == "havet"){
-      $("body").css("background-color", "black");
-      $("article#"+ forrige).hide();
-      $("article#"+ itemID).show();
+      havet(itemID);
+    }
+  else if(itemID == "storm"){
+      storm(itemID);
+    }
+  else if(itemID == "ankomst"){
+      ankomst(itemID);
+    }
+  else if(itemID == "ellisisland"){
+      ellisisland(itemID);
+    }
+  else if(itemID == "dakota"){
+      dakota(itemID);
     }
   else if(itemID =="sletta")
     sletta(itemID);
   else{
     $("article").hide();
-    $("#bgvid").hide();
+    $(".bgvid").hide();
     $("article#"+ itemID).show();
   }
 }
@@ -74,11 +83,12 @@ function getItemID(item){
 
 function bergen(itemID){
   if(forrige == "sletta"){
+    $("button#forrige").show();
     $("article#"+ forrige).fadeOut(1000);
     $("#navContainer").fadeOut();
-    $("#bgvid").show();
-    $("#bgvid").get(0).playbackRate = 2;
-    $("#bgvid").get(0).play();
+    $("#hordaland").show();
+    $("#hordaland").get(0).playbackRate = 2;
+    $("#hordaland").get(0).play();
     //$("#yakety").get(0).play();
     $("article#"+ itemID).delay(5000).fadeIn(1000);
     $("#map_lastFrame").delay(8000).fadeIn(1000);
@@ -93,17 +103,19 @@ function bergen(itemID){
 }
 function sletta(itemID){
   if(forrige == "bergen"){
-    $("#bgvid").show();
-    $("#bgvid").get(0).currentTime = 0;
-    $("#bgvid").get(0).pause();
+    $("#hordaland").show();
+    $("#hordaland").get(0).currentTime = 0;
+    $("#hordaland").get(0).pause();
     $("article#"+ forrige).hide();
     $("article#"+ itemID).show();
     $("#map_lastFrame").hide();
+    $("button#forrige").hide();
   }
   else{
     $("article#"+ forrige).fadeOut(1000);
     $("article#"+ itemID).show();
     $("#map_lastFrame").hide();
+    $("button#forrige").hide();
   }
 }
 function baaten(itemID){
@@ -120,7 +132,69 @@ function baaten(itemID){
     $("article#"+ itemID).fadeIn(1000);
   }
 }
-
+function havet(itemID){
+    if(forrige == "bryggen"){
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).delay(2000).fadeIn(1000);
+      $("#map_lastFrame").hide();
+      $("#hordaland").hide();
+      $("#atlantic1").show();
+      $("#atlantic1").get(0).play();
+      $("#atlantic1").get(0).playbackRate = 2;
+    }
+    else{
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).show();
+    }
+}
+function storm(itemID){
+  $("article#"+ forrige).fadeOut(1000);
+  $("article#"+ itemID).fadeIn(1000);
+}
+function ellisisland(itemID){
+  if(forrige == "dakota"){
+    $("#map_lastFrame").animate({width: "-100%", height: "-100%"}, 0);
+    $("#map_lastFrame").show();
+    $("article#"+ forrige).fadeOut(1000);
+    $("article#"+ itemID).fadeIn(1000);
+    $("button#neste").show();
+  }
+  else{
+    $("#map_lastFrame").attr("src", "./episoder/media/bakgrunn/atlantic2_lastframe.png");
+    $("article#"+ forrige).fadeOut(1000);
+    $("article#"+ itemID).fadeIn(1000);
+  }
+}
+function ankomst(itemID){
+    if(forrige == "storm"){
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).delay(4000).fadeIn(1000);
+      $("#map_lastFrame").hide();
+      $("#atlantic1").hide();
+      $("#atlantic2").show();
+      $("#atlantic2").get(0).play();
+      $("#atlantic2").get(0).playbackRate = 2;
+    }
+    else{
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).show();
+    }
+}
+function dakota(itemID){
+    if(forrige == "ellisisland"){
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).delay(2000).fadeIn(1000);
+      $("#map_lastFrame").hide();
+      $("#usa").show();
+      $("#usa").get(0).play();
+      $("#usa").get(0).playbackRate = 2;
+      $("button#neste").hide();
+    }
+    else{
+      $("article#"+ forrige).hide();
+      $("article#"+ itemID).show();
+    }
+}
 $(document).ready(function() {
   $('.fancybox').fancybox();
   $(".fancybox-thumb").fancybox({

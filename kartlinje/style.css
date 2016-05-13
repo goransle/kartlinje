@@ -65,6 +65,12 @@ article#bryggen{
 }
 article#ankomst{
     width: auto;
+    right: 0;
+    left: auto;
+    border-right: 0;
+    border-top: 0;
+    border-left: 3px;
+    border-style: solid;
 }
 article#ellisisland{
     width: auto;
@@ -75,6 +81,11 @@ article#ellisisland section{
   padding-top: 1em;
 }
 article p{
+}
+
+section video{
+  width: 100%;
+  height: auto;
 }
 
 #baaten{
@@ -185,21 +196,23 @@ button:hover{
   z-index: 0;
 }
 
-video#bgvid {
+video.bgvid {
     position: fixed;
     top: 50%;
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     z-index: 1;
     -ms-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url("./episoder/media/video.mp4") no-repeat;
     background-size: cover;
+}
+#hordaland{
+  background: url("./episoder/media/video/hordaland.mp4") no-repeat;
 }
 img#map_lastFrame {
     position: fixed;
@@ -207,7 +220,7 @@ img#map_lastFrame {
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     z-index: 1;
     -ms-transform: translateX(-50%) translateY(-50%);

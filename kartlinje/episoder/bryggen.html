@@ -1,6 +1,11 @@
 <section class="fullScreen">
   <div class="container">
-    <img id="bildet" src="./episoder/media/Bryggen/BryggenBlank.png" alt="" />
+    <img id="bryggen" src="./episoder/media/Bryggen/BryggenBlank.png" alt="" />
+    <img id="bryggenBaat" src="./episoder/media/Bryggen/BryggenBaat.png" alt="" />
+    <img id="bryggenBygning" src="./episoder/media/Bryggen/BryggenBygning.png" alt="" />
+    <img id="bryggenFlagg" src="./episoder/media/Bryggen/BryggenFlagg.png" alt="" />
+    <img id="bryggenBarn" src="./episoder/media/Bryggen/BryggenBarn.png" alt="" />
+
     <div id="baatOmraade"></div>
 	  <div id="kontorOmraade"></div>
     <div id="flaggOmraade"></div>
@@ -12,6 +17,7 @@
   </div>
 </section>
 <script>
+$("#bryggenBaat, #bryggenBygning, #bryggenFlagg, #bryggenBarn").hide();
 $("#tekst").hide();
 $("#baatOmraade").click(function() {
   $("#tekst").toggle();
@@ -20,19 +26,19 @@ $("#lukk").click(function() {
   $("#tekst").hide();
 });
 $("#baatOmraade").mouseover(function() {
-  $("#bildet").attr("src", "./episoder/media/Bryggen/BryggenBaat.png");
+  $("#bryggenBaat").show();
 });
 $("#kontorOmraade").mouseover(function() {
-  $("#bildet").attr("src", "./episoder/media/Bryggen/BryggenBygning.png");
+  $("#bryggenBygning").show();
 });
 $("#flaggOmraade").mouseover(function() {
-  $("#bildet").attr("src", "./episoder/media/Bryggen/BryggenFlagg.png");
+  $("#bryggenFlagg").show();
 });
 $("#barnOmraade").mouseover(function() {
-  $("#bildet").attr("src", "./episoder/media/Bryggen/BryggenBarn.png");
+  $("#bryggenBarn").show();
 });
 $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function() {
-  $("#bildet").attr("src", "./episoder/media/Bryggen/BryggenBlank.png");
+  $("#bryggenBaat, #bryggenBygning, #bryggenFlagg, #bryggenBarn").hide();
 });
 
 </script>
@@ -47,10 +53,14 @@ $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function
   margin-right: auto;
 }
 .container img{
-  position: relative;
+  position: absolute;
   width: 100%;
   height: auto;
   margin: 0;
+  z-index: 2;
+}
+#bryggen{
+  z-index: 1;
 }
 .hidden{
   display: none;
@@ -66,7 +76,7 @@ $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function
   -webkit-border-radius: 100px / 50px;
   border-radius: 100px / 50px;
   transform: rotate(0deg);
-  z-index: 1;
+  z-index: 2;
 }
 #kontorOmraade {
   position: absolute;
@@ -79,7 +89,7 @@ $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function
   -webkit-border-radius: 100px / 50px;
   border-radius: 100px / 50px;
   transform: rotate(0deg);
-  z-index: 1;
+  z-index: 2;
 }
 #flaggOmraade {
   position: absolute;
@@ -92,11 +102,11 @@ $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function
   -webkit-border-radius: 10px / 10px;
   border-radius: 10px / 10px;
   transform: rotate(15deg);
-  z-index: 1;
+  z-index: 2;
 }
 #barnOmraade {
   position: absolute;
-  bottom: 0px;
+  top: 380px;
   right: 165px;
   width: 130px;
   height: 150px;
@@ -105,13 +115,13 @@ $("#baatOmraade, #kontorOmraade, #flaggOmraade, #barnOmraade").mouseout(function
   -webkit-border-radius: 10px / 10px;
   border-radius: 10px / 10px;
   transform: rotate(2deg);
-  z-index: 1;
+  z-index: 2;
 }
 #tekst{
   position: absolute;
   top:0;
   left: 0;
-  z-index:1;
+  z-index:2;
   background-color: rgba(255, 0, 0, 1);;
   width: 50%;
   padding: 1em;

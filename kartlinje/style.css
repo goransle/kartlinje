@@ -63,6 +63,24 @@ article#bryggen{
     margin: 0;
     padding: 0;
 }
+article#storm{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: AntiqueWhite;
+}
+article#storm section{
+    background-color:rgba(112, 128, 144, 0.75);
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+    width: 50%;
+    margin-left: 0;
+    z-index: 2;
+}
+article#storm video{
+
+}
 article#ankomst{
     width: auto;
     right: 0;
@@ -202,7 +220,7 @@ video.bgvid {
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: 100%;
+    width: auto;
     height: auto;
     z-index: 1;
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -220,7 +238,7 @@ img#map_lastFrame {
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: 100%;
+    width: auto;
     height: auto;
     z-index: 1;
     -ms-transform: translateX(-50%) translateY(-50%);

@@ -130,6 +130,8 @@ function baaten(itemID){
   else {
     $("article#"+ forrige).fadeOut(1000);
     $("article#"+ itemID).fadeIn(1000);
+    $("#map_lastFrame").attr("src", "./episoder/media/bakgrunn/hordaland_lastframe.png");
+    $("#map_lastFrame").show();
   }
 }
 function havet(itemID){
@@ -145,11 +147,13 @@ function havet(itemID){
     else{
       $("article#"+ forrige).hide();
       $("article#"+ itemID).show();
+      $("article#"+ forrige + " audio").get(0).pause();
     }
 }
 function storm(itemID){
   $("article#"+ forrige).fadeOut(1000);
   $("article#"+ itemID).fadeIn(1000);
+  $("article#"+ itemID + " audio").get(0).play();
 }
 function ellisisland(itemID){
   if(forrige == "dakota"){
@@ -167,14 +171,14 @@ function ellisisland(itemID){
 }
 function ankomst(itemID){
     if(forrige == "storm"){
-      $("article#"+ forrige).hide();
+      $("article#"+ forrige).fadeOut();
+      $("article#"+ forrige + " audio").get(0).pause();
       $("article#"+ itemID).delay(4000).fadeIn(1000);
       $("#map_lastFrame").hide();
       $("#atlantic1").hide();
       $("#atlantic2").show();
       $("#atlantic2").get(0).play();
-      $("#atlantic2").get(0).playbackRate = 2;
-    }
+      $("#atlantic2").get(0).playbackRate = 2;    }
     else{
       $("article#"+ forrige).hide();
       $("article#"+ itemID).show();
@@ -182,7 +186,7 @@ function ankomst(itemID){
 }
 function dakota(itemID){
     if(forrige == "ellisisland"){
-      $("article#"+ forrige).hide();
+      $("article#"+ forrige).fadeOut();
       $("article#"+ itemID).delay(2000).fadeIn(1000);
       $("#map_lastFrame").hide();
       $("#usa").show();

@@ -16,7 +16,7 @@ episoder.push(["theend.html"]);
 episoder.forEach(function (item, index, array) {
   console.log(item);
   $("body").append("<article id='"+ getItemID(item) +"'></article>");
-  $("#pop-up ul").append("<li>" + getItemID(item) +"</li>");
+  //$("#pop-up ul").append("<li>" + getItemID(item) +"</li>");
   $("#"+getItemID(item)).load("./episoder/"+item.toString());
 });
 $("article").hide();
@@ -27,8 +27,7 @@ $("#miniLogo").click(function(){
     $("#pop-up").toggle();
 });
 $("#pop-up li").click(function(){
-    var clicked = $(this).html() + ".html";
-    episodeHopper(getItemID(clicked + ".html"));
+    window.location.href = "https://db-muho.rhcloud.com/";
 });
 
 function episodeHopper(id){
@@ -62,6 +61,9 @@ function episodeHopper(id){
     $("article").hide();
     $(".bgvid").hide();
     $("article#"+ itemID).show();
+    if(itemID="theend"){
+      $("button#neste").hide();
+    }
   }
 }
 
@@ -90,7 +92,6 @@ function bergen(itemID){
     $("#hordaland").show();
     $("#hordaland").get(0).playbackRate = 2;
     $("#hordaland").get(0).play();
-    //$("#yakety").get(0).play();
     $("article#"+ itemID).delay(5000).fadeIn(1000);
     $("#map_lastFrame").delay(8000).fadeIn(1000);
     $("#navContainer").delay(5000).fadeIn();
@@ -155,11 +156,13 @@ function storm(itemID){
   $("article#"+ forrige).fadeOut(1000);
   $("article#"+ itemID).fadeIn(1000);
   $("article#"+ itemID + " audio").get(0).play();
+  $("article#"+ itemID + " video").show();
 }
 function ellisisland(itemID){
   if(forrige == "dakota"){
     $("#map_lastFrame").animate({width: "-100%", height: "-100%"}, 0);
     $("#map_lastFrame").show();
+    $("#usa").hide();
     $("article#"+ forrige).fadeOut(1000);
     $("article#"+ itemID).fadeIn(1000);
     $("button#neste").show();
@@ -193,11 +196,12 @@ function dakota(itemID){
       $("#usa").show();
       $("#usa").get(0).play();
       $("#usa").get(0).playbackRate = 2;
-      //$("button#neste").hide();
     }
     else{
       $("article#"+ forrige).hide();
       $("article#"+ itemID).show();
+      $("#usa").show();
+      $("button#neste").fadeIn();
     }
 }
 $(document).ready(function() {

@@ -1,5 +1,4 @@
 body{
-
 }
 /* NB! REVERTER TIL DETTE OM NØDVENDIG!
 article img{
@@ -81,8 +80,8 @@ article#storm section{
 article#storm video{
 
 }
-article#ankomst{
-    width: auto;
+article#ankomst, article#ellisisland{
+    width: 45%;
     right: 0;
     left: auto;
     border-right: 0;
@@ -247,4 +246,15 @@ img#map_lastFrame {
     transform: translateX(-50%) translateY(-50%);
 }
 .fancybox-thumb{
+}
+
+p{
+  font-family: Lora;
+}
+h1, h2{
+  font-family: Raleway;
+}
+.fancybox-opened .fancybox-title{
+  font-size: 140%;
+  font-family: Lora;
 }

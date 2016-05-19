@@ -11,6 +11,7 @@ episoder.push(["storm.html"]);
 episoder.push(["ankomst.html"]);
 episoder.push(["ellisisland.html"]);
 episoder.push(["dakota.html"]);
+episoder.push(["theend.html"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
   console.log(item);
@@ -192,7 +193,7 @@ function dakota(itemID){
       $("#usa").show();
       $("#usa").get(0).play();
       $("#usa").get(0).playbackRate = 2;
-      $("button#neste").hide();
+      //$("button#neste").hide();
     }
     else{
       $("article#"+ forrige).hide();

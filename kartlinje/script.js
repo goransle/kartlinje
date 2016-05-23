@@ -11,6 +11,7 @@ episoder.push(["storm.html"]);
 episoder.push(["ankomst.html"]);
 episoder.push(["ellisisland.html"]);
 episoder.push(["dakota.html"]);
+episoder.push(["maskineri.html"]);
 episoder.push(["theend.html"]);
 //iterere over episoder
 episoder.forEach(function (item, index, array) {
@@ -62,7 +63,7 @@ function episodeHopper(id){
     $(".bgvid").hide();
     $("article#"+ itemID).show();
     if(itemID="theend"){
-      $("button#neste").hide();
+      //$("button#neste").hide();
     }
   }
 }

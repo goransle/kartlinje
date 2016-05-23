@@ -1,0 +1,119 @@
+<section class="fullScreen">
+  <div class="container" style="width:640px">
+    <img id="bakgrunn" src="./episoder/media/dakota/bottineau.png" alt="" />
+    <img id="bil" src="./episoder/media/dakota/bottineauBil.png" alt="" />
+    <img id="mann" src="./episoder/media/dakota/bottineauMann.png" alt="" />
+    <img id="maskin" src="./episoder/media/dakota/bottineauMaskin.png" alt="" />
+
+    <div id="bilOmraade"></div>
+	  <div id="mannOmraade"></div>
+    <div id="maskinOmraade"></div>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+
+    <!-- <audio src="episoder/media/Bryggen.m4a" autoplay="true"></audio> -->
+    <div class="tekst" id="bilTekst"><button class="lukk">Lukk</button><p>Transport trengs av både menneske, dyr, korn og maskineri. Desse bilane har likevel stått stasjonert sidan du kom fram til arbeidsplassen, kanskje sjåførane har lunsjpause?</p>
+    </div>
+  <div class="tekst" id="mannTekst"><button class="lukk">Lukk</button><p>Dei andre mennene visste både det eine og det andre om gardsbruk. Det tok deg tid å setje deg inn i dei nye arbeidsrutinane, men det var ikkje så altfor ulikt korleis ein gjorde det heime på Sletta.
+</p></div>
+  <div class="tekst"id="maskinTekst"><button class="lukk">Lukk</button><p>Du har ein kjensle av at denne maskina kjem til å ta opp mykje av tida di. Det var ikkje noko du hadde arbeidd med tidligare, men du lar ikkje la deg stoppe av eit lite hinder.
+</p></div>
+	  <div class="tooltip"><p>Utforsk bryggja!</p></div>
+    </div>
+</section>
+<script>
+$("#bil, #mann, #maskin").hide();
+$(".tekst").hide();
+$("#bilOmraade").click(function() {
+  $("#bilTekst").toggle();
+});
+$("#mannOmraade").click(function() {
+  $("#mannTekst").toggle();
+});
+$("#maskinOmraade").click(function() {
+  $("#maskinTekst").toggle();
+});
+$(".lukk").click(function() {
+  $(".tekst").hide();
+});
+$("#bilOmraade").mouseover(function() {
+  $("#bil").show();
+});
+$("#mannOmraade").mouseover(function() {
+  $("#mann").show();
+});
+$("#maskinOmraade").mouseover(function() {
+  $("#maskin").show();
+});
+$("#bilOmraade, #mannOmraade, #maskinOmraade").mouseout(function() {
+  $("#bil, #mann, #maskin").hide();
+});
+
+</script>
+<style>
+#bakgrunn{
+  z-index: 1;
+}
+.hidden{
+  display: none;
+}
+#bilOmraade {
+  position: absolute;
+  top: 330px;
+  left: 275px;
+  width: 150px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0);;
+  -moz-border-radius: 100px / 50px;
+  -webkit-border-radius: 100px / 50px;
+  border-radius: 100px / 50px;
+  transform: rotate(0deg);
+  z-index: 2;
+}
+#mannOmraade {
+  position: absolute;
+  top: 100px;
+  left: 90px;
+  width: 80px;
+  height: 130px;
+  background: rgba(0, 0, 0, 0);
+  -moz-border-radius: 100px / 50px;
+  -webkit-border-radius: 100px / 50px;
+  border-radius: 100px / 50px;
+  transform: rotate(0deg);
+  z-index: 2;
+}
+#maskinOmraade {
+  position: absolute;
+  top: 75px;
+  left: 180px;
+  width: 325px;
+  height: 150px;
+  background: rgba(0, 0, 0, 0);
+  -moz-border-radius: 10px / 10px;
+  -webkit-border-radius: 10px / 10px;
+  border-radius: 10px / 10px;
+  transform: rotate(-10deg);
+  z-index: 2;
+}
+.tekst{
+  position: absolute;
+  top:50;
+  left: calc(25% - 1em);
+  z-index:2;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  width: 50%;
+  padding: 1em;
+}
+
+.tooltip{
+	display:inline-block;
+	position:absolute;
+	width:71%;
+	padding:10px;
+	top:525;
+	left: 13.5%;
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+</style>
